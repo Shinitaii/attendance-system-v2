@@ -1,6 +1,9 @@
+package main;
 import java.awt.*;
+import java.awt.event.*;
+
 import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.border.*;
 
 import java.util.*;
 
@@ -14,7 +17,7 @@ public class App {
 
     private void initialize(){
         //initializing the window
-        frame = new JFrame();
+        frame = new JFrame("Attendance System");
         frame.setBounds(400, 400, 400, 400);
 
         //creating the GUI
@@ -32,6 +35,14 @@ public class App {
         topPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 0, 50));
 
         JButton loginButton = new JButton("Login");
+        loginButton.addMouseListener(new ButtonProperties(loginButton));
+        loginButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Login login = new Login();
+                login.frame.setVisible(true);
+                frame.dispose();
+            }
+        });
         topPanel.add(loginButton, BorderLayout.CENTER);
 
         //middle panel
@@ -39,13 +50,21 @@ public class App {
         middlePanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 0, 50));
 
         JButton registerButton = new JButton("Register");
+        registerButton.addMouseListener(new ButtonProperties(registerButton));
+        registerButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Register register = new Register();
+                frame.dispose();
+            }
+        });
         middlePanel.add(registerButton, BorderLayout.CENTER);
 
         //bottom panel
         JPanel bottomPanel = new JPanel(new BorderLayout());
-        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 75, 50));
+        bottomPanel.setBorder(BorderFactory.createEmptyBorder(0, 50, 70, 50));
 
         JLabel resetLabel = new JLabel("Forgot your password?", SwingConstants.CENTER);
+        resetLabel.addMouseListener(new LabelProperties(resetLabel));
         bottomPanel.add(resetLabel);
 
         //finalizing window
