@@ -1,15 +1,18 @@
 package main;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-import javax.swing.border.*;
-
-import java.util.*;
 
 public class App {
 
-    private JFrame frame;
+    /* 
+     * This is a remastered application I've created for my 12th grade capstone project.
+     * The legacy code of the said project is very unrefined and broke many of the coding method standards for -
+     * - Java and Java Swing as it was rushed. Hence, this project is created for me to improve and refine my skills
+     * regarding the syntax and the logical process of said language and its swing functionalities.
+    */
+
+    public JFrame frame;
 
     public App(){
         initialize();
@@ -20,7 +23,7 @@ public class App {
         frame = new JFrame("Attendance System");
         frame.setBounds(400, 400, 400, 400);
 
-        //creating the GUI
+        //creating the GUI contents
         JPanel mainPanel = new JPanel(new GridLayout(0, 1));
         frame.add(mainPanel);
 
@@ -54,6 +57,7 @@ public class App {
         registerButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 Register register = new Register();
+                register.frame.setVisible(true);
                 frame.dispose();
             }
         });
